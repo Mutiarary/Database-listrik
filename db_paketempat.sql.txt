@@ -1,0 +1,58 @@
+CREATE TABLE penggunaan(
+  id_penggunaan VARCHAR (6) UNIQUE NOT NULL,
+  id_pelanggan VARCHAR (6),
+  bulan VARCHAR (12),
+  tahun int,
+  meter_awal VARCHAR (50),
+  meter_akhir VARCHAR (50)
+);
+
+CREATE TABLE pelanggan(
+  id_pelanggan VARCHAR (6) UNIQUE NOT NULL,
+  username VARCHAR (50),
+  pass VARCHAR (50),
+  no_kwh int,
+  nama VARCHAR (100),
+  alamat VARCHAR (100),
+  id_tarif VARCHAR (6)
+);
+
+CREATE TABLE tagihan(
+  id_tagihan VARCHAR (6) UNIQUE NOT NULL,
+  id_penggunaan VARCHAR (6),
+  id_pelanggan VARCHAR (6),
+  bulan VARCHAR (12),
+  tahun int,
+  jum_meter int,
+  status VARCHAR (50)
+);
+
+CREATE TABLE tarif(
+  id_tarif VARCHAR (6) UNIQUE NOT NULL,
+  daya VARCHAR (50),
+  tarifperkwh int
+);
+
+CREATE TABLE pembayaran(
+  id_pembayaran VARCHAR (6) UNIQUE NOT NULL,
+  id_tagihan VARCHAR (6),
+  id_pelanggan VARCHAR (6),
+  tggl date,
+  bulan_bayar VARCHAR (12),
+  biaya int,
+  total_bayar int,
+  id_admin VARCHAR (6)
+);
+
+CREATE TABLE tb_admin(
+  id_admin VARCHAR (6) UNIQUE NOT NULL,
+  username VARCHAR (50),
+  pass VARCHAR (50),
+  nama VARCHAR (100),
+  id_level VARCHAR (6)
+);
+
+CREATE TABLE tb_level(
+  id_level VARCHAR (6) UNIQUE NOT NULL,
+  nama_level VARCHAR (50)
+);
